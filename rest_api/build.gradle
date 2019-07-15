@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+dependencies {
+    compile project(':use_cases')
+    compile project(':sql_persistence')
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    components {
+        withModule('org.springframework:spring-beans') {
+            allVariants {
+                withDependencyConstraints {
+                    // Need to patch constraints because snakeyaml is an optional dependency
+                    it.findAll { it.name == 'snakeyaml' }.each { it.version { strictly '1.19' } }
+                }
+            }
+        }
+    }
+}
+
+application {
+    // Define the main class for the application
+    mainClassName = 'com.agnaldo4j.kanban.simulator.App'
+}
