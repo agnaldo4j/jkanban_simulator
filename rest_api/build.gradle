@@ -27,7 +27,7 @@ dependencies {
     }
 }
 
-application {
+bootJar {
     // Define the main class for the application
     mainClassName = 'com.agnaldo4j.kanban.simulator.App'
 }

@@ -8,6 +8,7 @@ gradle
 rest_api/build
 use_cases/build
 sql_persistence/build
+models/build
 
 # Ignore IntelliJ
 .idea
