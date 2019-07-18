@@ -3,5 +3,9 @@ plugins {
 }
 
 dependencies {
+    compile 'com.zaxxer:HikariCP:3.3.1'
+    compile 'org.springframework.data:spring-data-jdbc:1.0.9.RELEASE'
+    compile 'org.postgresql:postgresql:42.2.6'
 
+    compile project(':models')
 }

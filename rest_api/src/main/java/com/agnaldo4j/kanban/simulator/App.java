@@ -3,16 +3,19 @@
  */
 package com.agnaldo4j.kanban.simulator;
 
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 
 @SpringBootApplication
+@EnableJdbcRepositories
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
 
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        new SpringApplicationBuilder()
+                .bannerMode(Banner.Mode.OFF)
+                .sources(App.class)
+                .run(args);
     }
 }

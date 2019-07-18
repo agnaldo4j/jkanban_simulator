@@ -3,5 +3,7 @@ plugins {
 }
 
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web:2.1.6.RELEASE')
+
     compile project(':models')
 }

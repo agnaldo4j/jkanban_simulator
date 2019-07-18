@@ -6,13 +6,16 @@ plugins {
 }
 
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    
+    compile('org.springframework.boot:spring-boot-starter-data-jdbc') {
+        exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
+    }
+    
     compile project(':use_cases')
     compile project(':sql_persistence')
+    
     testImplementation 'junit:junit:4.12'
-
-    implementation 'org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     components {
@@ -30,4 +33,5 @@ dependencies {
 bootJar {
     // Define the main class for the application
     mainClassName = 'com.agnaldo4j.kanban.simulator.App'
+    launchScript()
 }
