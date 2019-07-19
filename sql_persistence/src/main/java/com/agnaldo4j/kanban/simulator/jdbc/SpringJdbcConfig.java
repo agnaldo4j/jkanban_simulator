@@ -21,13 +21,16 @@ public class SpringJdbcConfig {
     public DataSource getConnection() throws SQLException {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:postgresql://localhost:5432/kanban_development");
-        config.setUsername("agnaldo4j");
-        config.setPassword("01aa01");
+        config.setUsername("teste");
+        config.setPassword("123456");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 
-        return new HikariDataSource(config);
+        DataSource dataSource = new HikariDataSource(config);
+        //Flyway flyway = Flyway.configure().dataSource(dataSource).load();
+        //flyway.migrate();
+        return dataSource;
     }
 
     @Bean

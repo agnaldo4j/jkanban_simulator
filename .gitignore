@@ -10,6 +10,11 @@ use_cases/build
 sql_persistence/build
 models/build
 
+rest_api/out
+use_cases/out
+sql_persistence/out
+models/out
+
 # Ignore IntelliJ
 .idea
 kanban_simulator.iml
