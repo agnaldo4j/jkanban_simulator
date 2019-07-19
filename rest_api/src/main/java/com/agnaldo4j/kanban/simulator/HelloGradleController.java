@@ -23,8 +23,12 @@ public class HelloGradleController {
         logger.info("CONTROLLER CHAMADO");
         Optional<Simulation> optionalSimulation = simulator.execute();
 
-        if(optionalSimulation.isPresent()) return optionalSimulation.get().helloGradle();
-        else return "Not Found";
+        //TODO fix use of Optional
+        return optionalSimulation.orElseGet(this::computeStatus).helloGradle();
+    }
+
+    public Simulation computeStatus() {
+        return new Simulation();
     }
 
 }

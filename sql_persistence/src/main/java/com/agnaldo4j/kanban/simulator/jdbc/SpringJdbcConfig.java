@@ -20,9 +20,9 @@ public class SpringJdbcConfig {
     @Bean
     public DataSource getConnection() throws SQLException {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:postgresql://camerite-dados.postgres.database.azure.com:5432/postgres");
-        config.setUsername("agnaldo@camerite-dados");
-        config.setPassword("3LBxNahY");
+        config.setJdbcUrl("jdbc:postgresql://localhost:5432/kanban_development");
+        config.setUsername("agnaldo4j");
+        config.setPassword("01aa01");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
