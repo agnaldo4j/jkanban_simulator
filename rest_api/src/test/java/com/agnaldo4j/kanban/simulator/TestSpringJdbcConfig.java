@@ -3,6 +3,7 @@ package com.agnaldo4j.kanban.simulator;
 import com.agnaldo4j.kanban.simulator.jdbc.SpringJdbcConfig;
 import com.agnaldo4j.kanban.simulator.jdbc.repositories.SimulationRepository;
 import com.agnaldo4j.kanban.simulator.models.Simulation;
+import com.agnaldo4j.kanban.simulator.models.builders.DefaultSimulation;
 import com.agnaldo4j.kanban.simulator.usecases.Simulator;
 import com.agnaldo4j.kanban.simulator.usecases.adapters.SimulatorPersistence;
 import com.zaxxer.hikari.HikariConfig;
@@ -36,7 +37,12 @@ public class TestSpringJdbcConfig extends SpringJdbcConfig {
         return new SimulatorPersistence() {
             @Override
             public Optional<Simulation> findById(String id) {
-                return Optional.of(new Simulation());
+                return Optional.of(new DefaultSimulation().build());
+            }
+
+            @Override
+            public Simulation save(Simulation simulation) throws Exception {
+                return new DefaultSimulation().build();
             }
         };
     }

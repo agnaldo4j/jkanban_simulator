@@ -1,4 +1,4 @@
 package com.agnaldo4j.kanban.simulator.models;
 
-public class Project {
+public class Project extends Domain {
 }

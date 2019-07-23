@@ -18,4 +18,9 @@ public class SQLSimulatorPersistence implements SimulatorPersistence {
     public Optional<Simulation> findById(String id) {
         return simulationRepository.findByEmailAddress(id);
     }
+
+    @Override
+    public Simulation save(Simulation simulation) throws Exception {
+        return simulationRepository.save(simulation);
+    }
 }
