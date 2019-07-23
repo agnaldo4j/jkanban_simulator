@@ -1,7 +1,7 @@
 package com.agnaldo4j.kanban.simulator.usecases;
 
-import com.agnaldo4j.kanban.simulator.jdbc.repositories.SimulationRepository;
 import com.agnaldo4j.kanban.simulator.models.Simulation;
+import com.agnaldo4j.kanban.simulator.usecases.adapters.SimulatorPersistence;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,10 @@ public class Simulator {
     Logger logger = LogManager.getLogger(Simulator.class);
 
     @Autowired
-    SimulationRepository simulationRepository;
+    SimulatorPersistence simulatorPersistence;
 
     public Optional<Simulation> execute() {
         logger.info("TESTE DE LOG");
-        return simulationRepository.findByEmailAddress("teste");
+        return simulatorPersistence.findById("teste");
     }
 }

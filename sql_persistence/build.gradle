@@ -7,7 +7,7 @@ dependencies {
     compile 'org.springframework.data:spring-data-jdbc:1.0.9.RELEASE'
     compile 'org.postgresql:postgresql:42.2.6'
 
-    compile project(':models')
+    compile project(':use_cases')
 
     compile 'org.flywaydb:flyway-core:5.2.4'
 }

@@ -1,28 +1,28 @@
-package com.agnaldo4j.kanban.simulator.jdbc;
+package com.agnaldo4j.kanban.simulator;
 
-import com.agnaldo4j.kanban.simulator.jdbc.mappers.SimulationRowMapper;
+import com.agnaldo4j.kanban.simulator.jdbc.SpringJdbcConfig;
+import com.agnaldo4j.kanban.simulator.jdbc.repositories.SimulationRepository;
 import com.agnaldo4j.kanban.simulator.models.Simulation;
+import com.agnaldo4j.kanban.simulator.usecases.Simulator;
+import com.agnaldo4j.kanban.simulator.usecases.adapters.SimulatorPersistence;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jdbc.repository.RowMapperMap;
-import org.springframework.data.jdbc.repository.config.ConfigurableRowMapperMap;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.Optional;
 
 @Configuration
 @ComponentScan("com.agnaldo4j.kanban.simulator.jdbc.repositories")
-public class SpringJdbcConfig {
+public class TestSpringJdbcConfig extends SpringJdbcConfig {
 
     @Bean
     public DataSource dataSource() throws SQLException {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:postgresql://localhost:5432/kanban_development");
-        config.setUsername("teste");
-        config.setPassword("123456");
+        config.setJdbcUrl("jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
@@ -32,8 +32,12 @@ public class SpringJdbcConfig {
     }
 
     @Bean
-    public RowMapperMap rowMappersMap() {
-        return new ConfigurableRowMapperMap()
-                .register(Simulation.class, new SimulationRowMapper());
+    public SimulatorPersistence simulatorPersistence() {
+        return new SimulatorPersistence() {
+            @Override
+            public Optional<Simulation> findById(String id) {
+                return Optional.of(new Simulation());
+            }
+        };
     }
 }

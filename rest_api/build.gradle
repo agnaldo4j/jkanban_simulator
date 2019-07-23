@@ -12,10 +12,11 @@ dependencies {
         exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
     }
     
-    compile project(':use_cases')
+    compile project(':sql_persistence')
     
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.h2database:h2:1.4.199'
 
     components {
         withModule('org.springframework:spring-beans') {
@@ -29,8 +30,15 @@ dependencies {
     }
 }
 
+mainClassName = 'com.agnaldo4j.kanban.simulator.App'
+
+jar {
+    // Define the main class for the application
+    enabled = true
+}
+
 bootJar {
     // Define the main class for the application
+    classifier = 'boot'
     mainClassName = 'com.agnaldo4j.kanban.simulator.App'
-    launchScript()
 }
