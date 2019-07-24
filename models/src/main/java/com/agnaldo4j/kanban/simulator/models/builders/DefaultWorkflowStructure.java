@@ -1,11 +1,11 @@
 package com.agnaldo4j.kanban.simulator.models.builders;
 
 import com.agnaldo4j.kanban.simulator.models.Flow;
-import com.agnaldo4j.kanban.simulator.models.Member;
 import com.agnaldo4j.kanban.simulator.models.MemberAbility;
 import com.agnaldo4j.kanban.simulator.models.Workflow;
 
-import java.util.*;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class DefaultWorkflowStructure implements Builder<Workflow> {
 
@@ -23,47 +23,39 @@ public class DefaultWorkflowStructure implements Builder<Workflow> {
     public Flow buildBacklogWithOrder(int order) {
         return new Flow(
                 order,
+                MemberAbility.None,
                 "Backlog"
         );
     }
 
     public Flow buildAnalysisWithOrder(int order) {
-        List<Member> members = new ArrayList<>();
-        members.add(MemberAbility.Analyst.build("Zeca"));
-
         return new Flow(
                 order,
-                "Analysis",
-                members
+                MemberAbility.Analyst,
+                "Analysis"
         );
     }
 
     public Flow buildDevelopmentWithOrder(int order) {
-        List<Member> members = new ArrayList<>();
-        members.add(MemberAbility.Developer.build("Maria"));
-        members.add(MemberAbility.Developer.build("Jose"));
-
         return new Flow(
                 order,
-                "Development",
-                members
+                MemberAbility.Developer,
+                "Development"
         );
     }
 
     public Flow buildQualityAssuranceWithOrder(int order) {
-        List<Member> members = new ArrayList<>();
-        members.add(MemberAbility.QualityAssurance.build("Gisele"));
-
         return new Flow(
                 order,
-                "Quality Assurance",
-                members
+                MemberAbility.QualityAssurance,
+                "Quality Assurance"
         );
     }
 
     public Flow buildDeployWithOrder(int order) {
         return new Flow(
                 order,
+                MemberAbility.QualityAssurance,
                 "Deploy"
         );
     }
@@ -71,6 +63,7 @@ public class DefaultWorkflowStructure implements Builder<Workflow> {
     public Flow buildDoneWithOrder(int order) {
         return new Flow(
                 order,
+                MemberAbility.None,
                 "Done"
         );
     }

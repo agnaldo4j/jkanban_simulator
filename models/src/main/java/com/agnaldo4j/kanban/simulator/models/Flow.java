@@ -1,28 +1,32 @@
 package com.agnaldo4j.kanban.simulator.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.UUID;
 
 public class Flow extends Domain implements Comparable<Flow> {
 
     private final int order;
+    private final MemberAbility requiredAbility;
     private final String name;
-    private final List<Member> members;
 
-    public Flow(int order, String name) {
-        this(UUID.randomUUID().toString(), order, name, new ArrayList<>());
+    public Flow(int order, MemberAbility requiredAbility, String name) {
+        this(UUID.randomUUID().toString(), order, requiredAbility, name);
     }
 
-    public Flow(int order, String name, List<Member> members) {
-        this(UUID.randomUUID().toString(), order, name, members);
-    }
-
-    public Flow(String id, int order, String name, List<Member> members) {
+    public Flow(String id, int order, MemberAbility requiredAbility, String name) {
         super(id);
         this.order = order;
+        this.requiredAbility = requiredAbility;
         this.name = name;
-        this.members = members;
+    }
+
+    public int order() {
+        return this.order;
+    }
+
+    public SortedSet<Task> tasks() {
+        return new TreeSet<>();
     }
 
     @Override
