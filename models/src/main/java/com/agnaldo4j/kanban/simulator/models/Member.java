@@ -1,4 +1,12 @@
 package com.agnaldo4j.kanban.simulator.models;
 
 public class Member extends Domain {
+
+    private final MemberAbility ability;
+    private final String name;
+
+    public Member(MemberAbility ability, String name) {
+        this.ability = ability;
+        this.name = name;
+    }
 }

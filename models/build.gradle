@@ -3,5 +3,8 @@ plugins {
 }
 
 dependencies {
-
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
+    testImplementation 'com.tngtech.jgiven:jgiven-junit:0.17.1'
+    
 }
