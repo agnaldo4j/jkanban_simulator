@@ -13,7 +13,13 @@ public class StartDefaultSimulation {
     @Autowired
     SimulatorPersistence simulatorPersistence;
     public Simulation execute(Command command) throws Exception {
-        Simulation simulation = new DefaultSimulation(new DefaultKanbanBoard(new DefaultWorkflowStructure(), new DefaultMembers()), new DefaultProjects()).build();
+        Simulation simulation = new DefaultSimulation(
+                new DefaultKanbanBoard(
+                        new DefaultWorkflowStructure(),
+                        new DefaultMembers()
+                ),
+                new DefaultProjects()
+        ).build();
 
         return simulatorPersistence.save(simulation);
     }
