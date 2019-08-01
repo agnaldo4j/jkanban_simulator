@@ -3,6 +3,7 @@ package com.agnaldo4j.kanban.simulator;
 import com.agnaldo4j.kanban.simulator.models.Simulation;
 import com.agnaldo4j.kanban.simulator.models.builders.*;
 import com.agnaldo4j.kanban.simulator.usecases.Simulator;
+import com.agnaldo4j.kanban.simulator.usecases.StartDefaultSimulation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,12 @@ public class HelloGradleController {
     Logger logger = LogManager.getLogger(HelloGradleController.class);
 
     @Autowired
-    Simulator simulator;
+    StartDefaultSimulation startDefaultSimulation;
 
     @GetMapping
-    public String helloGradle() {
+    public String helloGradle() throws Exception {
         logger.info("CONTROLLER CHAMADO");
-        Optional<Simulation> optionalSimulation = simulator.execute();
+        Optional<Simulation> optionalSimulation = startDefaultSimulation.execute();
 
         //TODO fix use of Optional
         return optionalSimulation.orElseGet(this::computeStatus).helloGradle();

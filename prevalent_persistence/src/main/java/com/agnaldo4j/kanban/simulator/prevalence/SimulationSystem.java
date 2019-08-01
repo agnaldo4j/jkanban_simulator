@@ -41,9 +41,11 @@ public class SimulationSystem implements PrevalentSystem {
 
     public void load(List<Simulation> initialState) throws IOException, ClassNotFoundException {
         state = restoreState(initialState);
-        File backupFile = new File(this.stateFile.getName() + ".bkp");
-        if (backupFile.exists()) backupFile.delete();
-        FileCopyUtils.copy(this.stateFile, backupFile);
+        if(this.stateFile.exists()) {
+            File backupFile = new File(this.stateFile.getName() + ".bkp");
+            if (backupFile.exists()) backupFile.delete();
+            FileCopyUtils.copy(this.stateFile, backupFile);
+        }
         journal = new ObjectOutputStream(new FileOutputStream(this.stateFile));
         writeToJournal(state);
     }
