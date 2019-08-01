@@ -20,7 +20,7 @@ public class SQLSimulatorPersistence implements SimulatorPersistence {
     }
 
     @Override
-    public Simulation add(Simulation simulation) throws Exception {
-        return simulationRepository.save(simulation);
+    public void add(Simulation simulation) throws Exception {
+        simulationRepository.save(simulation);
     }
 }
