@@ -1,8 +1,5 @@
 package com.agnaldo4j.kanban.simulator.models;
 
-import com.agnaldo4j.kanban.simulator.models.commands.Event;
-import io.reactivex.Observer;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
@@ -13,8 +10,7 @@ public class Kanban extends Domain<Kanban> {
     private final List<Member> members;
     private final List<Task> tasks;
 
-    public Kanban(Workflow workflow, List<Member> members, Observer<Event<Kanban>> observer) {
-        super(observer);
+    public Kanban(Workflow workflow, List<Member> members) {
         this.workflow = workflow;
         this.members = members;
         this.tasks = new ArrayList<>();

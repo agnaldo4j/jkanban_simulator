@@ -12,7 +12,7 @@ dependencies {
         exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
     }
     
-    compile project(':sql_persistence')
+    compile project(':prevalent_persistence')
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'

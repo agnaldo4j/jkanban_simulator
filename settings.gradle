@@ -9,6 +9,7 @@
 
 include 'models'
 include 'use_cases'
+include 'prevalent_persistence'
 include 'sql_persistence'
 include 'rest_api'
 rootProject.name = 'kanban_simulator'

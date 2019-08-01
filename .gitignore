@@ -17,6 +17,10 @@ use_cases/out
 sql_persistence/out
 models/out
 
+**/*.dat
+**/*.bkp
+
+
 # Ignore IntelliJ
 .idea
 kanban_simulator.iml

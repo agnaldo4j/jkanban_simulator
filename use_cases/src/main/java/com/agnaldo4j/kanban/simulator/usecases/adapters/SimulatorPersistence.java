@@ -8,5 +8,5 @@ public interface SimulatorPersistence {
 
     public Optional<Simulation> findById(String id);
 
-    public Simulation save(Simulation simulation) throws Exception;
+    public void add(Simulation simulation) throws Exception;
 }

@@ -21,6 +21,8 @@ public class StartDefaultSimulation {
                 new DefaultProjects()
         ).build();
 
-        return simulatorPersistence.save(simulation);
+        simulatorPersistence.add(simulation);
+
+        return simulation;
     }
 }
