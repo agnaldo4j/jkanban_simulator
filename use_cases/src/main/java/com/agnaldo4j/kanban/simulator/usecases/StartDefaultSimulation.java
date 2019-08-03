@@ -16,7 +16,6 @@ public class StartDefaultSimulation {
     public Optional<Simulation> execute() throws Exception {
         Simulation simulation = new DefaultSimulation(
                 new DefaultKanbanBoard(
-                        new DefaultWorkflowStructure(),
                         new DefaultMembers()
                 ),
                 new DefaultProjects()

@@ -30,7 +30,7 @@ public class HelloGradleController {
     }
 
     public Simulation computeStatus() {
-        return new DefaultSimulation(new DefaultKanbanBoard(new DefaultWorkflowStructure(), new DefaultMembers()), new DefaultProjects()).build();
+        return new DefaultSimulation(new DefaultKanbanBoard(new DefaultMembers()), new DefaultProjects()).build();
 
     }
 

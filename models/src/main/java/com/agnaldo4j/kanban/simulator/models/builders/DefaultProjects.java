@@ -1,7 +1,6 @@
 package com.agnaldo4j.kanban.simulator.models.builders;
 
 import com.agnaldo4j.kanban.simulator.models.Project;
-import com.agnaldo4j.kanban.simulator.models.Task;
 
 import java.util.ArrayList;
 import java.util.List;

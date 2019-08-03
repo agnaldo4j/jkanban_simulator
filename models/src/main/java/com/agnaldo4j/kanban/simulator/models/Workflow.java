@@ -1,23 +1,68 @@
 package com.agnaldo4j.kanban.simulator.models;
 
-import java.util.SortedSet;
-
 public class Workflow extends Domain<Workflow> {
 
-    private final Flow defaultFlow;
-    private final SortedSet<Flow> flows;
+    private final Flow options;
+    private final Flow backlog;
+    private final Flow analysis;
+    private final Flow development;
+    private final Flow qualityAssurance;
+    private final Flow deploy;
+    private final Flow done;
 
-    public Workflow(SortedSet<Flow> flows) {
-        this.flows = flows;
-        this.defaultFlow = new Flow(0, MemberAbility.None, "undefined");
+    public Workflow() {
+        this.options = new Flow("Options");
+        this.backlog = new Flow("Backlog");
+        this.analysis = new Flow("Analysis");
+        this.development = new Flow("Development");
+        this.qualityAssurance = new Flow("Quality Assurance");
+        this.deploy = new Flow("Deploy");
+        this.done = new Flow("Done");
     }
 
-    public SortedSet<Task> backlogTasks() {
-        return flows
-                .stream()
-                .filter(flow -> flow.order() == 1)
-                .findFirst()
-                .orElse(defaultFlow)
-                .tasks();
+    public int numberOfTasksInOptions() {
+        return this.options.tasks().size();
+    }
+
+    public int numberOfTasksInBacklog() {
+        return this.backlog.tasks().size();
+    }
+
+    public int numberOfTasksInAnalysis() {
+        return this.analysis.tasks().size();
+    }
+
+    public int numberOfTasksInDevelopment() {
+        return this.development.tasks().size();
+    }
+
+    public int numberOfTasksInQualityAssurance() {
+        return this.qualityAssurance.tasks().size();
+    }
+
+    public int numberOfTasksInDeploy() {
+        return this.deploy.tasks().size();
+    }
+
+    public int numberOfTasksInDone() {
+        return this.done.tasks().size();
+    }
+
+    public int numberOfTasksInProgress() {
+        return this.numberOfTasksInBacklog() +
+                this.numberOfTasksInAnalysis() +
+                this.numberOfTasksInDevelopment() +
+                this.numberOfTasksInQualityAssurance() +
+                this.numberOfTasksInDeploy();
+    }
+
+    public int numberOfTasks() {
+        return this.numberOfTasksInOptions() +
+                this.numberOfTasksInBacklog() +
+                this.numberOfTasksInAnalysis() +
+                this.numberOfTasksInDevelopment() +
+                this.numberOfTasksInQualityAssurance() +
+                this.numberOfTasksInDeploy() +
+                this.numberOfTasksInDone();
     }
 }

@@ -9,4 +9,8 @@ public class Member extends Domain<Member> {
         this.ability = ability;
         this.name = name;
     }
+
+    public boolean hasAbility(MemberAbility requiredAbility) {
+        return this.ability.equals(requiredAbility);
+    }
 }

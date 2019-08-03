@@ -9,14 +9,12 @@ import java.util.List;
 public class DefaultKanbanBoard implements Builder<Kanban> {
 
     private final Builder<List<Member>> membersBuilder;
-    private final Builder<Workflow> workflowBuilder;
 
-    public DefaultKanbanBoard(Builder<Workflow> workflowBuilder, Builder<List<Member>> membersBuilder) {
-        this.workflowBuilder = workflowBuilder;
+    public DefaultKanbanBoard(Builder<List<Member>> membersBuilder) {
         this.membersBuilder = membersBuilder;
     }
 
     public Kanban build() {
-        return new Kanban(workflowBuilder.build(), membersBuilder.build());
+        return new Kanban(new Workflow(), membersBuilder.build());
     }
 }

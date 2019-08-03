@@ -14,11 +14,15 @@ public class Simulation extends Domain<Simulation> {
         this.projects = projects;
     }
 
-    public SortedSet<Task> backlogTasks() {
+    public int backlogTasks() {
         return this.kanban.backlogTasks();
     }
 
     public String helloGradle() {
         return "Hello Gradle!";
+    }
+
+    public int numberOfTasksOnKanbanBoard() {
+        return this.kanban.numberOfTasksInFlows();
     }
 }

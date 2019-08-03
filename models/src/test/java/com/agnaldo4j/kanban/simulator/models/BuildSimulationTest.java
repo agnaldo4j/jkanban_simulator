@@ -13,7 +13,6 @@ public class BuildSimulationTest  {
     public void buildSimulation() {
         this.simulation = new DefaultSimulation(
                 new DefaultKanbanBoard(
-                        new DefaultWorkflowStructure(),
                         new DefaultMembers()
                 ),
                 new DefaultProjects()
@@ -21,7 +20,7 @@ public class BuildSimulationTest  {
     }
 
     @Test
-    public void we_can_buy_a_ticket_from_wroclaw_to_berlin_for_ten_euros() {
-        assertEquals(0, this.simulation.backlogTasks().size());
+    public void kanban_board_must_be_empty() {
+        assertEquals(0, this.simulation.numberOfTasksOnKanbanBoard());
     }
 }
