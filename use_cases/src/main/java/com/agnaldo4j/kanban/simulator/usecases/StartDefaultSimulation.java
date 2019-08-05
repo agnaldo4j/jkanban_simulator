@@ -15,10 +15,9 @@ public class StartDefaultSimulation {
     SimulatorPersistence simulatorPersistence;
     public Optional<Simulation> execute() throws Exception {
         Simulation simulation = new DefaultSimulation(
-                new DefaultKanbanBoard(
-                        new DefaultMembers()
-                ),
-                new DefaultProjects()
+                new DefaultKanbanBoard(),
+                new DefaultProjects(),
+                new DefaultMembers()
         ).build();
 
         simulatorPersistence.add(simulation);

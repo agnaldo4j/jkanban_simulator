@@ -6,7 +6,10 @@ import java.util.UUID;
 
 public class Flow extends Domain<Flow> {
 
+    private static final long serialVersionUID = 2054257246011782724L;
+
     private final String name;
+    private final SortedSet<Task> tasks;
 
     public Flow(String name) {
         this(UUID.randomUUID().toString(), name);
@@ -15,9 +18,10 @@ public class Flow extends Domain<Flow> {
     public Flow(String id, String name) {
         super(id);
         this.name = name;
+        this.tasks = new TreeSet<>();
     }
 
     public SortedSet<Task> tasks() {
-        return new TreeSet<>();
+        return this.tasks;
     }
 }

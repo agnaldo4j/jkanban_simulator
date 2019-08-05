@@ -8,12 +8,11 @@ import com.agnaldo4j.kanban.simulator.models.builders.DefaultSimulation;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class SimulationRowMapper implements RowMapper<Simulation> {
     @Override
-    public Simulation mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new DefaultSimulation(new DefaultKanbanBoard(new DefaultMembers()), new DefaultProjects()).build();
+    public Simulation mapRow(ResultSet rs, int rowNum) {
+        return new DefaultSimulation(new DefaultKanbanBoard(), new DefaultProjects(), new DefaultMembers()).build();
 
     }
 }

@@ -1,18 +1,13 @@
 package com.agnaldo4j.kanban.simulator.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Kanban extends Domain<Kanban> {
 
-    private final Workflow workflow;
-    private final List<Member> members;
-    private final List<Task> tasks;
+    private static final long serialVersionUID = -4443681766733527698L;
 
-    public Kanban(Workflow workflow, List<Member> members) {
+    private final Workflow workflow;
+
+    public Kanban(Workflow workflow) {
         this.workflow = workflow;
-        this.members = members;
-        this.tasks = new ArrayList<>();
     }
 
     public int backlogTasks() {

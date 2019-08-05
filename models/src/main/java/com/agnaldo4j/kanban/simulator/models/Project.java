@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Project extends Domain<Project> {
 
+    private static final long serialVersionUID = 3344189040534770877L;
+
     private final double income;
     private final List<Task> tasks;
 

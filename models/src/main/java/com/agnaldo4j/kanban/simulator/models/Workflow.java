@@ -2,6 +2,8 @@ package com.agnaldo4j.kanban.simulator.models;
 
 public class Workflow extends Domain<Workflow> {
 
+    private static final long serialVersionUID = 5172780650054081583L;
+
     private final Flow options;
     private final Flow backlog;
     private final Flow analysis;
