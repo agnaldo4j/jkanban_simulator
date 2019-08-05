@@ -1,6 +1,8 @@
 package com.agnaldo4j.kanban.simulator.models.builders;
 
-import com.agnaldo4j.kanban.simulator.models.*;
+import com.agnaldo4j.kanban.simulator.models.EffortType;
+import com.agnaldo4j.kanban.simulator.models.Task;
+import com.agnaldo4j.kanban.simulator.models.TaskType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.List;
 public class AProject extends ProjectBuilder {
 
     public AProject() {
-        super(1500);
+        super(1, 1500);
     }
 
     protected List<Task> buildTasks() {

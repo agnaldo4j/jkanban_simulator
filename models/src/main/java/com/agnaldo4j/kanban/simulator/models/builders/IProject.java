@@ -10,7 +10,7 @@ import java.util.List;
 public class IProject extends ProjectBuilder {
 
     public IProject() {
-        super(2500);
+        super(9,2500);
     }
 
     protected List<Task> buildTasks() {

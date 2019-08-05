@@ -7,14 +7,16 @@ import java.util.List;
 public abstract class ProjectBuilder implements Builder<Project> {
 
     private final double income;
+    private final int order;
 
-    public ProjectBuilder(double income) {
+    public ProjectBuilder(int order, double income) {
         this.income = income;
+        this.order = order;
     }
 
     @Override
     public Project build() {
-        return new Project(income, buildTasks());
+        return new Project(order, income, buildTasks());
     }
 
     protected abstract List<Task> buildTasks();

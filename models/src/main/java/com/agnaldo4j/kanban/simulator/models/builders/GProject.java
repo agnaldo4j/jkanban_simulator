@@ -11,7 +11,7 @@ import java.util.List;
 public class GProject extends ProjectBuilder {
 
     public GProject() {
-        super(4500);
+        super(7, 4500);
     }
 
     protected List<Task> buildTasks() {

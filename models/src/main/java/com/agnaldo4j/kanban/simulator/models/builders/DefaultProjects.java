@@ -2,16 +2,16 @@ package com.agnaldo4j.kanban.simulator.models.builders;
 
 import com.agnaldo4j.kanban.simulator.models.Project;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
-public class DefaultProjects implements Builder<List<Project>> {
+public class DefaultProjects implements Builder<SortedSet<Project>> {
 
     public DefaultProjects() {}
 
     @Override
-    public List<Project> build() {
-        List<Project> projects = new ArrayList<>();
+    public SortedSet<Project> build() {
+        SortedSet<Project> projects = new TreeSet<>();
         projects.add(new AProject().build());
         projects.add(new BProject().build());
         projects.add(new CProject().build());

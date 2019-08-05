@@ -11,7 +11,7 @@ import java.util.List;
 public class EProject extends ProjectBuilder {
 
     public EProject() {
-        super(3000);
+        super(5, 3000);
     }
 
     protected List<Task> buildTasks() {

@@ -11,7 +11,7 @@ import java.util.List;
 public class HProject extends ProjectBuilder {
 
     public HProject() {
-        super(2000);
+        super(8,2000);
     }
 
     protected List<Task> buildTasks() {

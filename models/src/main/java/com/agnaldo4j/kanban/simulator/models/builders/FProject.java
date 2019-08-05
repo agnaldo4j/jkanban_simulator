@@ -10,7 +10,7 @@ import java.util.List;
 public class FProject extends ProjectBuilder {
 
     public FProject() {
-        super(1500);
+        super(6, 1500);
     }
 
     protected List<Task> buildTasks() {
