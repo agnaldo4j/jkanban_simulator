@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProjectSelectionSimulationTest extends DefaultSimulationTest {
 
     @Test
-    public void select_project_to_work_first_interaction() {
+    public void select_project_to_work() {
         assertEquals(9, simulation.numberOfDefaultProjects());
 
         this.simulation.selectProjectsToWork();
