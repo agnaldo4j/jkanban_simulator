@@ -1,10 +1,11 @@
 language: java
+install: true
 
-jdk:
-  - oraclejdk12
+os: linux
+jdk: oraclejdk12
 
 script:
-  - gradle build
+  - ./gradlew build --scan -s
 
 #after_success:
 #  - sbt coveralls
