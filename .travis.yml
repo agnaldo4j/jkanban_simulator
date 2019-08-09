@@ -18,7 +18,7 @@ cache:
     - $HOME/.gradle/wrapper/
 
 script:
-  - ./gradlew build
+  - ./gradlew cobertura coveralls build
 
 #after_success:
 #  - sbt coveralls
