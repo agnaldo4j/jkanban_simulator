@@ -1,0 +1,10 @@
+language: java
+
+jdk:
+  - oraclejdk12
+
+script:
+  - gradle build
+
+#after_success:
+#  - sbt coveralls
