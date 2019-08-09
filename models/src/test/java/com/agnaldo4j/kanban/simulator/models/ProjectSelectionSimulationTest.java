@@ -9,42 +9,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProjectSelectionSimulationTest extends DefaultSimulationTest {
 
     @Test
-    public void select_project_to_work() {
-        assertEquals(9, simulation.numberOfDefaultProjects());
-
+    public void selectingFirstProjectToWork() {
         this.simulation.selectProjectsToWork();
-        List<Project> projectsFirst = this.simulation.projectOptions();
 
-        assertEquals(1, projectsFirst.get(0).order());
-        assertEquals(2, projectsFirst.get(1).order());
-        assertEquals(3, projectsFirst.get(2).order());
+        List<Project> projects = this.simulation.projectOptions();
+
+        assertEquals(0, this.simulation.numberOfTasksOnKanbanBoard());
+
+        assertEquals(1, projects.get(0).order());
+        assertEquals(2, projects.get(1).order());
+        assertEquals(3, projects.get(2).order());
 
         assertEquals(6, simulation.numberOfDefaultProjects());
 
-        this.simulation.selectProjectsToWork();
-        List<Project> projectsSecond = this.simulation.projectOptions();
+        Project project = this.simulation.projectOptions().get(1);
+        assertEquals(2, project.order());
+        assertEquals(1500d, project.income());
 
-        assertEquals(1, projectsFirst.get(0).order());
-        assertEquals(2, projectsFirst.get(1).order());
-        assertEquals(3, projectsFirst.get(2).order());
-        assertEquals(4, projectsSecond.get(3).order());
-        assertEquals(5, projectsSecond.get(4).order());
-        assertEquals(6, projectsSecond.get(5).order());
+        this.simulation.selectProjectToWork(project);
 
-        assertEquals(3, simulation.numberOfDefaultProjects());
+        assertEquals(2, projects.size());
+        assertEquals(1, projects.get(0).order());
+        assertEquals(3, projects.get(1).order());
 
-        this.simulation.selectProjectsToWork();
-        List<Project> projectsThird = this.simulation.projectOptions();
-        assertEquals(1, projectsFirst.get(0).order());
-        assertEquals(2, projectsFirst.get(1).order());
-        assertEquals(3, projectsFirst.get(2).order());
-        assertEquals(4, projectsSecond.get(3).order());
-        assertEquals(5, projectsSecond.get(4).order());
-        assertEquals(6, projectsSecond.get(5).order());
-        assertEquals(7, projectsThird.get(6).order());
-        assertEquals(8, projectsThird.get(7).order());
-        assertEquals(9, projectsThird.get(8).order());
-
-        assertEquals(0, simulation.numberOfDefaultProjects());
+        assertEquals(11, this.simulation.numberOfTasksOnKanbanBoard());
     }
 }

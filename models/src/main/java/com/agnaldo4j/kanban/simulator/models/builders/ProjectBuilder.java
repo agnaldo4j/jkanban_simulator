@@ -25,13 +25,15 @@ public abstract class ProjectBuilder implements Builder<Project> {
             TaskType taskType,
             EffortType analysisEffort,
             EffortType developmentEffort,
-            EffortType qualityAssuranceEffort) {
+            EffortType qualityAssuranceEffort,
+            int order) {
 
         return new Task(
                 taskType,
                 new AnalysisEffort(analysisEffort),
                 new DevelopmentEffort(developmentEffort),
-                new QualityAssurancesEffort(qualityAssuranceEffort)
+                new QualityAssurancesEffort(qualityAssuranceEffort),
+                order
         );
     }
 }

@@ -24,4 +24,8 @@ public class Flow extends Domain<Flow> {
     public SortedSet<Task> tasks() {
         return this.tasks;
     }
+
+    public void addTask(Task task) {
+        this.tasks.add(task);
+    }
 }

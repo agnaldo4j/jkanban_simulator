@@ -16,21 +16,21 @@ public class CProject extends ProjectBuilder {
 
     protected List<Task> buildTasks() {
         List<Task> tasks = new ArrayList<>();
-        tasks.add(buildTask(TaskType.Normal, EffortType.Easy, EffortType.Hard, EffortType.Hard));
-        tasks.add(buildTask(TaskType.Normal, EffortType.Normal, EffortType.Medium, EffortType.Medium));
-        tasks.add(buildTask(TaskType.Bug, EffortType.Easy, EffortType.Medium, EffortType.Easy));
-        tasks.add(buildTask(TaskType.Bug, EffortType.Hard, EffortType.Medium, EffortType.Hard));
-        tasks.add(buildTask(TaskType.Normal, EffortType.VeryHard, EffortType.Normal, EffortType.Easy));
-        tasks.add(buildTask(TaskType.Bug, EffortType.Normal, EffortType.VeryHard, EffortType.Normal));
-        tasks.add(buildTask(TaskType.Normal, EffortType.Hard, EffortType.Normal, EffortType.Medium));
-        tasks.add(buildTask(TaskType.Normal, EffortType.Hard, EffortType.Medium, EffortType.VeryHard));
-        tasks.add(buildTask(TaskType.Normal, EffortType.Medium, EffortType.Hard, EffortType.Medium));
-        tasks.add(buildTask(TaskType.Bug, EffortType.Easy, EffortType.Easy, EffortType.Normal));
-        tasks.add(buildTask(TaskType.Normal, EffortType.Medium, EffortType.Hard, EffortType.Hard));
-        tasks.add(buildTask(TaskType.Normal, EffortType.Hard, EffortType.Normal, EffortType.Medium));
-        tasks.add(buildTask(TaskType.Bug, EffortType.Hard, EffortType.VeryHard, EffortType.Medium));
-        tasks.add(buildTask(TaskType.Normal, EffortType.Medium, EffortType.Easy, EffortType.Hard));
-        tasks.add(buildTask(TaskType.Normal, EffortType.Normal, EffortType.VeryHard, EffortType.Normal));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Easy, EffortType.Hard, EffortType.Hard, 1));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Normal, EffortType.Medium, EffortType.Medium, 2));
+        tasks.add(buildTask(TaskType.Bug, EffortType.Easy, EffortType.Medium, EffortType.Easy, 3));
+        tasks.add(buildTask(TaskType.Bug, EffortType.Hard, EffortType.Medium, EffortType.Hard, 4));
+        tasks.add(buildTask(TaskType.Normal, EffortType.VeryHard, EffortType.Normal, EffortType.Easy, 5));
+        tasks.add(buildTask(TaskType.Bug, EffortType.Normal, EffortType.VeryHard, EffortType.Normal, 6));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Hard, EffortType.Normal, EffortType.Medium, 7));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Hard, EffortType.Medium, EffortType.VeryHard, 8));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Medium, EffortType.Hard, EffortType.Medium,9));
+        tasks.add(buildTask(TaskType.Bug, EffortType.Easy, EffortType.Easy, EffortType.Normal, 10));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Medium, EffortType.Hard, EffortType.Hard, 11));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Hard, EffortType.Normal, EffortType.Medium, 12));
+        tasks.add(buildTask(TaskType.Bug, EffortType.Hard, EffortType.VeryHard, EffortType.Medium, 13));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Medium, EffortType.Easy, EffortType.Hard, 14));
+        tasks.add(buildTask(TaskType.Normal, EffortType.Normal, EffortType.VeryHard, EffortType.Normal, 15));
         return tasks;
     }
 }

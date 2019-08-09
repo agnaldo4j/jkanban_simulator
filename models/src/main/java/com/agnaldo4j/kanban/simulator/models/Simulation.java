@@ -1,7 +1,15 @@
 package com.agnaldo4j.kanban.simulator.models;
 
-import java.util.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.SortedSet;
+
+@Accessors(fluent = true)
 public class Simulation extends Domain<Simulation> {
 
     private static final long serialVersionUID = -5601157972441472469L;
@@ -12,6 +20,8 @@ public class Simulation extends Domain<Simulation> {
     private final List<Project> projectCompleted;
     private final List<Member> members;
     private final Kanban kanban;
+
+    @Getter(AccessLevel.PUBLIC)
     public String name;
 
     public Simulation(Kanban kanban, SortedSet<Project> projects, List<Member> members) {
@@ -71,5 +81,11 @@ public class Simulation extends Domain<Simulation> {
 
     public List<Project> projectOptions() {
         return Collections.unmodifiableList(this.projectOptions);
+    }
+
+    public void selectProjectToWork(Project project) {
+        this.projectOptions.remove(project);
+        this.projects.add(project);
+        this.kanban.addTasks(project);
     }
 }

@@ -17,4 +17,8 @@ public class Kanban extends Domain<Kanban> {
     public int numberOfTasksInFlows() {
         return this.workflow.numberOfTasks();
     }
+
+    public void addTasks(Project project) {
+        this.workflow.addTasks(project);
+    }
 }

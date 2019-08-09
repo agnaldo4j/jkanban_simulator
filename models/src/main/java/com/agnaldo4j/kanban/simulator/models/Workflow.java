@@ -1,5 +1,7 @@
 package com.agnaldo4j.kanban.simulator.models;
 
+import java.util.TreeSet;
+
 public class Workflow extends Domain<Workflow> {
 
     private static final long serialVersionUID = 5172780650054081583L;
@@ -66,5 +68,9 @@ public class Workflow extends Domain<Workflow> {
                 this.numberOfTasksInQualityAssurance() +
                 this.numberOfTasksInDeploy() +
                 this.numberOfTasksInDone();
+    }
+
+    public void addTasks(Project project) {
+        project.tasks().forEach(task -> this.options.addTask(task));
     }
 }

@@ -1,12 +1,22 @@
 package com.agnaldo4j.kanban.simulator.models;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
+@Accessors(fluent = true)
 public class Domain<T> implements Serializable {
+    @Getter(AccessLevel.PUBLIC)
     private final String id;
+
+    @Getter(AccessLevel.PUBLIC)
     private final Date created;
+
+    @Getter(AccessLevel.PUBLIC)
     private final Date updated;
 
     public Domain() {
@@ -25,9 +35,5 @@ public class Domain<T> implements Serializable {
         this.id = id;
         this.created = created;
         this.updated = updated;
-    }
-
-    public String id() {
-        return this.id;
     }
 }
