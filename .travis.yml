@@ -3,6 +3,8 @@ install: true
 
 before_install:
   - chmod +x gradlew
+  - ./gradlew assemble
+  - ./gradlew check
 
 os: linux
 jdk: oraclejdk12
