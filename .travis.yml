@@ -10,7 +10,7 @@ os: linux
 jdk: oraclejdk12
 
 script:
-  - ./gradlew build --scan -s
+  - ./gradlew build
 
 #after_success:
 #  - sbt coveralls
