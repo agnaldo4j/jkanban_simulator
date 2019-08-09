@@ -1,5 +1,5 @@
 language: java
-install: gradle wrapper --gradle-version 5.5.1
+install: true
 
 before_install:
   - chmod +x gradlew

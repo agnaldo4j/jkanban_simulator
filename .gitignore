@@ -4,7 +4,6 @@
 # Ignore Gradle build output directory
 out
 build
-gradle
 
 tmp/es/*
 
