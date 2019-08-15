@@ -6,5 +6,6 @@ JKambanSimulator is a...
 ## How to Use
 
 ## HTTP RESTful API
+- [![RESTful API Reference](https://jkanbansimulator.docs.apiary.io)](https://jkanbansimulator.docs.apiary.io)
 
 ## How to Contribute
