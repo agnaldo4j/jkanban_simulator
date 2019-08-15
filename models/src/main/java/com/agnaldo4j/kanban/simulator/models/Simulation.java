@@ -4,10 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.SortedSet;
+import java.util.*;
 
 @Accessors(fluent = true)
 public class Simulation extends Domain<Simulation> {
@@ -16,8 +13,9 @@ public class Simulation extends Domain<Simulation> {
     private static final int PROJECT_SELECTION_BUFFER = 3;
 
     private final SortedSet<Project> projects;
-    private final List<Project> projectOptions;
-    private final List<Project> projectCompleted;
+    private final SortedSet<Project> projectOptions;
+    private final SortedSet<Project> projectInProgress;
+    private final SortedSet<Project> projectCompleted;
     private final List<Member> members;
     private final Kanban kanban;
 
@@ -28,8 +26,9 @@ public class Simulation extends Domain<Simulation> {
         this.kanban = kanban;
         this.projects = projects;
         this.members = members;
-        this.projectOptions = new ArrayList<>();
-        this.projectCompleted = new ArrayList<>();
+        this.projectOptions = new TreeSet<>();
+        this.projectInProgress = new TreeSet<>();
+        this.projectCompleted = new TreeSet<>();
     }
 
     public int backlogTasks() {
@@ -79,13 +78,17 @@ public class Simulation extends Domain<Simulation> {
         }
     }
 
-    public List<Project> projectOptions() {
-        return Collections.unmodifiableList(this.projectOptions);
+    public SortedSet<Project> projectOptions() {
+        return Collections.unmodifiableSortedSet(this.projectOptions);
     }
 
     public void selectProjectToWork(Project project) {
         this.projectOptions.remove(project);
-        this.projects.add(project);
+        if(this.projectInProgress.size() > 0) {
+            Project lastProject = this.projectInProgress.last();
+            project.changeOrder(lastProject.order() + 1);
+            this.projectInProgress.add(project);
+        }
         this.kanban.addTasks(project);
     }
 }

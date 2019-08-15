@@ -15,7 +15,7 @@ public class Task extends Domain<Task> implements Comparable<Task> {
     private final QualityAssurancesEffort qualityAssuranceEffort;
 
     @Getter(AccessLevel.PUBLIC)
-    private final int order;
+    private int order;
 
     public Task(TaskType taskType,
                 AnalysisEffort analysisEffort,
@@ -36,5 +36,9 @@ public class Task extends Domain<Task> implements Comparable<Task> {
         if (this.order < task.order) return -1;
         else if (this.order > task.order) return 1;
         else return 0;
+    }
+
+    public void changeOrder(int newOrder) {
+        this.order = newOrder;
     }
 }

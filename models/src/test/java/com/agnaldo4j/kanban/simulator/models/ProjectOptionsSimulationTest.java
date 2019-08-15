@@ -2,7 +2,7 @@ package com.agnaldo4j.kanban.simulator.models;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.SortedSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,39 +21,24 @@ public class ProjectOptionsSimulationTest extends DefaultSimulationTest {
 
     private void givenProjectsToWorkThirdInteraction() {
         this.simulation.selectProjectsToWork();
-        List<Project> projects = this.simulation.projectOptions();
-        assertEquals(1, projects.get(0).order());
-        assertEquals(2, projects.get(1).order());
-        assertEquals(3, projects.get(2).order());
-        assertEquals(4, projects.get(3).order());
-        assertEquals(5, projects.get(4).order());
-        assertEquals(6, projects.get(5).order());
-        assertEquals(7, projects.get(6).order());
-        assertEquals(8, projects.get(7).order());
-        assertEquals(9, projects.get(8).order());
+
+        SortedSet<Project> projects = this.simulation.projectOptions();
+        assertEquals(9, projects.size());
     }
 
     private void givenProjectsToWorkSecondInteraction() {
         this.simulation.selectProjectsToWork();
-        List<Project> projects = this.simulation.projectOptions();
-
-        assertEquals(1, projects.get(0).order());
-        assertEquals(2, projects.get(1).order());
-        assertEquals(3, projects.get(2).order());
-        assertEquals(4, projects.get(3).order());
-        assertEquals(5, projects.get(4).order());
-        assertEquals(6, projects.get(5).order());
+        SortedSet<Project> projects = this.simulation.projectOptions();
+        assertEquals(6, projects.size());
 
         assertEquals(3, simulation.numberOfDefaultProjects());
     }
 
     private void givenProjectsToWorkFirstInteraction() {
         this.simulation.selectProjectsToWork();
-        List<Project> projects = this.simulation.projectOptions();
+        SortedSet<Project> projects = this.simulation.projectOptions();
 
-        assertEquals(1, projects.get(0).order());
-        assertEquals(2, projects.get(1).order());
-        assertEquals(3, projects.get(2).order());
+        assertEquals(3, projects.size());
 
         assertEquals(6, simulation.numberOfDefaultProjects());
     }

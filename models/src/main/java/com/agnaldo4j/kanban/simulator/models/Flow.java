@@ -26,6 +26,10 @@ public class Flow extends Domain<Flow> {
     }
 
     public void addTask(Task task) {
+        if(this.tasks.size() > 0) {
+            Task lastTask = this.tasks.last();
+            task.changeOrder(lastTask.order() + 1);
+        }
         this.tasks.add(task);
     }
 }
