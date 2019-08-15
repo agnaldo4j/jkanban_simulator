@@ -13,7 +13,11 @@ public class DefaultMembers implements Builder<List<Member>> {
         members.add(new Member(MemberAbility.Analyst, "José"));
         members.add(new Member(MemberAbility.Developer, "Carlos"));
         members.add(new Member(MemberAbility.Developer, "Maria"));
-        members.add(new Member(MemberAbility.QualityAssurance, "Andréia"));
+
+        List<MemberAbility> andreiaAbilities = new ArrayList<MemberAbility>();
+        andreiaAbilities.add(MemberAbility.QualityAssurance);
+        andreiaAbilities.add(MemberAbility.Deployer);
+        members.add(new Member(andreiaAbilities, "Andréia"));
         return members;
     }
 }

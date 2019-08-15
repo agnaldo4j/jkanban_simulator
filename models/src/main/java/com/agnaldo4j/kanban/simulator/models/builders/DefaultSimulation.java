@@ -1,9 +1,6 @@
 package com.agnaldo4j.kanban.simulator.models.builders;
 
-import com.agnaldo4j.kanban.simulator.models.Kanban;
-import com.agnaldo4j.kanban.simulator.models.Member;
-import com.agnaldo4j.kanban.simulator.models.Project;
-import com.agnaldo4j.kanban.simulator.models.Simulation;
+import com.agnaldo4j.kanban.simulator.models.*;
 
 import java.util.List;
 import java.util.SortedSet;
@@ -21,6 +18,17 @@ public class DefaultSimulation implements Builder<Simulation> {
     }
 
     public Simulation build() {
-        return new Simulation(builder.build(), projectsBuilder.build(), membersBuilder.build());
+        Simulation simulation = new Simulation(builder.build(), projectsBuilder.build(), membersBuilder.build());
+        simulation
+                .membersByAbility(MemberAbility.Analyst)
+                .forEach(member -> simulation.addWorkOnAnalysis(member));
+        simulation
+                .membersByAbility(MemberAbility.Developer)
+                .forEach(member -> simulation.addWorkOnDevelopment(member));
+        simulation
+                .membersByAbility(MemberAbility.QualityAssurance)
+                .forEach(member -> simulation.addWorkOnQualityAssurance(member));
+
+        return simulation;
     }
 }

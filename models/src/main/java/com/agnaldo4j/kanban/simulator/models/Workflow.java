@@ -71,4 +71,20 @@ public class Workflow extends Domain<Workflow> {
     public void addTasks(Project project) {
         project.tasks().forEach(task -> this.options.addTask(task));
     }
+
+    public void addWorkerOnAnalysis(Member worker) {
+        worker.workAt(analysis);
+    }
+
+    public void addWorkerOnDevelopment(Member worker) {
+        worker.workAt(development);
+    }
+
+    public void addWorkerOnQualityAssurance(Member worker) {
+        worker.workAt(qualityAssurance);
+    }
+
+    public void addWorkerOnDeploy(Member worker) {
+        worker.workAt(deploy);
+    }
 }

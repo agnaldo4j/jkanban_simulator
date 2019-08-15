@@ -33,4 +33,19 @@ public class BuildSimulationTest extends DefaultSimulationTest {
     public void simulation_number_of_qas() {
         assertEquals(1, simulation.numberOfQAs());
     }
+
+    @Test
+    public void members_working_on_analysis() {
+        assertEquals(1, this.simulation.numberOfAnalysts());
+    }
+
+    @Test
+    public void members_working_on_development() {
+        assertEquals(2, this.simulation.numberOfDevelopers());
+    }
+
+    @Test
+    public void members_working_on_qas() {
+        assertEquals(1, this.simulation.numberOfQAs());
+    }
 }

@@ -4,7 +4,8 @@ public enum MemberAbility {
     None,
     Analyst,
     Developer,
-    QualityAssurance;
+    QualityAssurance,
+    Deployer;
 
     public Member build(String name) {
         return new Member(this, name);
