@@ -3,8 +3,6 @@ install: true
 
 before_install:
   - chmod +x gradlew
-  - ./gradlew assemble
-  - ./gradlew check
 
 os: linux
 jdk: oraclejdk12
@@ -18,7 +16,7 @@ cache:
     - $HOME/.gradle/wrapper/
 
 script:
-  - ./gradlew cobertura coveralls build
+  - ./gradlew build
 
 #after_success:
 #  - sbt coveralls

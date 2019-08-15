@@ -1,7 +1,5 @@
 package com.agnaldo4j.kanban.simulator.models;
 
-import java.util.TreeSet;
-
 public class Workflow extends Domain<Workflow> {
 
     private static final long serialVersionUID = 5172780650054081583L;
