@@ -9,16 +9,26 @@ public class DefaultSimulation implements Builder<Simulation> {
 
     private final Builder<SortedSet<Project>> projectsBuilder;
     private Builder<List<Member>> membersBuilder;
-    private final Builder<Kanban> builder;
+    private final Builder<Kanban> kanbanBuilder;
+    private final Builder<SortedSet<VirtualDay>> daysBuilder;
 
-    public DefaultSimulation(Builder<Kanban> builder, Builder<SortedSet<Project>> projectsBuilder, Builder<List<Member>> membersBuilder) {
-        this.builder = builder;
+    public DefaultSimulation(
+            Builder<Kanban> kanbanBuilder,
+            Builder<SortedSet<Project>> projectsBuilder,
+            Builder<List<Member>> membersBuilder,
+            Builder<SortedSet<VirtualDay>> daysBuilder) {
+        this.kanbanBuilder = kanbanBuilder;
         this.projectsBuilder = projectsBuilder;
         this.membersBuilder = membersBuilder;
+        this.daysBuilder = daysBuilder;
     }
 
     public Simulation build() {
-        Simulation simulation = new Simulation(builder.build(), projectsBuilder.build(), membersBuilder.build());
+        Simulation simulation = new Simulation(
+                kanbanBuilder.build(),
+                projectsBuilder.build(),
+                membersBuilder.build(),
+                daysBuilder.build());
         simulation
                 .membersByAbility(MemberAbility.Analyst)
                 .forEach(member -> simulation.addWorkOnAnalysis(member));

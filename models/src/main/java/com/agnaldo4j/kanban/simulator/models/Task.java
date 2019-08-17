@@ -41,4 +41,8 @@ public class Task extends Domain<Task> implements Comparable<Task> {
     public void changeOrder(int newOrder) {
         this.order = newOrder;
     }
+
+    public boolean analysisEffortCompleted() {
+        return this.analysisEffort.completed();
+    }
 }

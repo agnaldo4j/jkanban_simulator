@@ -1,6 +1,7 @@
 package com.agnaldo4j.kanban.simulator.models;
 
 import java.security.InvalidParameterException;
+import java.util.SortedSet;
 
 public class Kanban extends Domain<Kanban> {
 
@@ -58,5 +59,45 @@ public class Kanban extends Domain<Kanban> {
             throw new InvalidParameterException(
                     "Member("+member.name()+") doesn't have the required ability: "+MemberAbility.Deployer
             );
+    }
+
+    public SortedSet<Task> tasksInOptions() {
+        return this.workflow.tasksInOptions();
+    }
+
+    public SortedSet<Task> tasksInBacklog() {
+        return this.workflow.tasksInBacklog();
+    }
+
+    public SortedSet<Task> tasksInAnalysis() {
+        return this.workflow.tasksInAnalysis();
+    }
+
+    public SortedSet<Task> tasksInDevelopment() {
+        return this.workflow.tasksInDevelopment();
+    }
+
+    public SortedSet<Task> tasksInQualityAssurance() {
+        return this.workflow.tasksInQualityAssurance();
+    }
+
+    public SortedSet<Task> tasksInDeploy() {
+        return this.workflow.tasksInDeploy();
+    }
+
+    public SortedSet<Task> tasksInDone() {
+        return this.workflow.tasksInDone();
+    }
+
+    public void moveFromOptionsToBacklog(Task task) {
+        this.workflow.moveFromOptionsToBacklog(task);
+    }
+
+    public void moveFromBacklogToAnalysis(Task task) {
+        this.workflow.moveFromBacklogToAnalysis(task);
+    }
+
+    public void moveFromAnalysisToDevelopment(Task task) {
+        this.workflow.moveFromAnalysisToDevelopment(task);
     }
 }

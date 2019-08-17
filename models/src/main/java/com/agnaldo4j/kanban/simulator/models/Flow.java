@@ -32,4 +32,9 @@ public class Flow extends Domain<Flow> {
         }
         this.tasks.add(task);
     }
+
+    public void removeTask(Task task) {
+        if (this.tasks.contains(task))
+            this.tasks.remove(task);
+    }
 }

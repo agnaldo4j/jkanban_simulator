@@ -1,5 +1,8 @@
 package com.agnaldo4j.kanban.simulator.models;
 
+import java.util.Collections;
+import java.util.SortedSet;
+
 public class Workflow extends Domain<Workflow> {
 
     private static final long serialVersionUID = 5172780650054081583L;
@@ -86,5 +89,50 @@ public class Workflow extends Domain<Workflow> {
 
     public void addWorkerOnDeploy(Member worker) {
         worker.workAt(deploy);
+    }
+
+    public SortedSet<Task> tasksInOptions() {
+        return Collections.unmodifiableSortedSet(this.options.tasks());
+    }
+
+    public SortedSet<Task> tasksInBacklog() {
+        return Collections.unmodifiableSortedSet(this.backlog.tasks());
+    }
+
+    public SortedSet<Task> tasksInAnalysis() {
+        return Collections.unmodifiableSortedSet(this.analysis.tasks());
+    }
+
+    public SortedSet<Task> tasksInDevelopment() {
+        return Collections.unmodifiableSortedSet(this.development.tasks());
+    }
+
+    public SortedSet<Task> tasksInQualityAssurance() {
+        return Collections.unmodifiableSortedSet(this.qualityAssurance.tasks());
+    }
+
+    public SortedSet<Task> tasksInDeploy() {
+        return Collections.unmodifiableSortedSet(this.deploy.tasks());
+    }
+
+    public SortedSet<Task> tasksInDone() {
+        return Collections.unmodifiableSortedSet(this.done.tasks());
+    }
+
+    public void moveFromOptionsToBacklog(Task task) {
+        this.options.removeTask(task);
+        this.backlog.addTask(task);
+    }
+
+    public void moveFromBacklogToAnalysis(Task task) {
+        this.backlog.removeTask(task);
+        this.analysis.addTask(task);
+    }
+
+    public void moveFromAnalysisToDevelopment(Task task) {
+        if(task.analysisEffortCompleted()) {
+            this.analysis.removeTask(task);
+            this.development.addTask(task);
+        } else throw new IllegalStateException("task "+task.id()+" hasn't be completed");
     }
 }

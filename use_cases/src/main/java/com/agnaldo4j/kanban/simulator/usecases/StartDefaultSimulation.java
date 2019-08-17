@@ -17,7 +17,8 @@ public class StartDefaultSimulation {
         Simulation simulation = new DefaultSimulation(
                 new DefaultKanbanBoard(),
                 new DefaultProjects(),
-                new DefaultMembers()
+                new DefaultMembers(),
+                new DefaultDays()
         ).build();
 
         simulatorPersistence.add(simulation);

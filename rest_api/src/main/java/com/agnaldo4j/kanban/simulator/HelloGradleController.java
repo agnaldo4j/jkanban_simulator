@@ -1,10 +1,7 @@
 package com.agnaldo4j.kanban.simulator;
 
 import com.agnaldo4j.kanban.simulator.models.Simulation;
-import com.agnaldo4j.kanban.simulator.models.builders.DefaultKanbanBoard;
-import com.agnaldo4j.kanban.simulator.models.builders.DefaultMembers;
-import com.agnaldo4j.kanban.simulator.models.builders.DefaultProjects;
-import com.agnaldo4j.kanban.simulator.models.builders.DefaultSimulation;
+import com.agnaldo4j.kanban.simulator.models.builders.*;
 import com.agnaldo4j.kanban.simulator.usecases.StartDefaultSimulation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,7 +29,11 @@ public class HelloGradleController {
     }
 
     public Simulation computeStatus() {
-        return new DefaultSimulation(new DefaultKanbanBoard(), new DefaultProjects(), new DefaultMembers()).build();
+        return new DefaultSimulation(
+                new DefaultKanbanBoard(),
+                new DefaultProjects(),
+                new DefaultMembers(),
+                new DefaultDays()).build();
 
     }
 

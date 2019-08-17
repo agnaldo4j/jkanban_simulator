@@ -13,6 +13,8 @@ public class Simulation extends Domain<Simulation> {
     private static final long serialVersionUID = -5601157972441472469L;
     private static final int PROJECT_SELECTION_BUFFER = 3;
 
+    private final SortedSet<VirtualDay> days;
+    private final SortedSet<VirtualDay> pastDays;
     private final SortedSet<Project> projects;
     private final SortedSet<Project> projectOptions;
     private final SortedSet<Project> projectInProgress;
@@ -23,13 +25,15 @@ public class Simulation extends Domain<Simulation> {
     @Getter(AccessLevel.PUBLIC)
     public String name;
 
-    public Simulation(Kanban kanban, SortedSet<Project> projects, List<Member> members) {
+    public Simulation(Kanban kanban, SortedSet<Project> projects, List<Member> members, SortedSet<VirtualDay> days) {
         this.kanban = kanban;
         this.projects = projects;
         this.members = members;
         this.projectOptions = new TreeSet<>();
         this.projectInProgress = new TreeSet<>();
         this.projectCompleted = new TreeSet<>();
+        this.days = days;
+        this.pastDays = new TreeSet<>();
     }
 
     public int backlogTasks() {
@@ -107,5 +111,48 @@ public class Simulation extends Domain<Simulation> {
 
     public void addWorkOnQualityAssurance(Member member) {
         this.kanban.addWorkOnQualityAssurance(member);
+    }
+
+    public SortedSet<Task> tasksInOptions() {
+        return this.kanban.tasksInOptions();
+    }
+
+    public SortedSet<Task> tasksInBacklog() {
+        return this.kanban.tasksInBacklog();
+    }
+
+    public SortedSet<Task> tasksInAnalysis() {
+        return this.kanban.tasksInAnalysis();
+    }
+
+    public SortedSet<Task> tasksInDevelopment() {
+        return this.kanban.tasksInDevelopment();
+    }
+
+    public SortedSet<Task> tasksInQualityAssurance() {
+        return this.kanban.tasksInQualityAssurance();
+    }
+
+    public SortedSet<Task> tasksInDeploy() {
+        return this.kanban.tasksInDeploy();
+    }
+
+    public SortedSet<Task> tasksInDone() {
+        return this.kanban.tasksInDone();
+    }
+
+    public void moveFromOptionsToBacklog(Task task) {
+        this.kanban.moveFromOptionsToBacklog(task);
+    }
+
+    public void moveFromBacklogToAnalysis(Task task) {
+        this.kanban.moveFromBacklogToAnalysis(task);
+    }
+
+    public void moveFromAnalysisToDevelopment(Task task) {
+        this.kanban.moveFromAnalysisToDevelopment(task);
+    }
+
+    public void performRandomWork() {
     }
 }

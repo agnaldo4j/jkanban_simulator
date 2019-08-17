@@ -27,4 +27,8 @@ public class TaskAbilityEffort extends Domain {
             return remainingExecution;
         }
     }
+
+    public boolean completed() {
+        return this.remainingEffort <= 0;
+    }
 }
