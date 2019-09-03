@@ -161,4 +161,8 @@ public class Simulation extends Domain<Simulation> {
         this.days.remove(virtualDay);
         this.pastDays.add(virtualDay);
     }
+
+    public void moveCardsToNextStep() {
+        this.kanban.moveCardsToNextStep();
+    }
 }

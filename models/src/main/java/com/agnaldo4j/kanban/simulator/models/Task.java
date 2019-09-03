@@ -13,6 +13,7 @@ public class Task extends Domain<Task> implements Comparable<Task> {
     private final AnalysisEffort analysisEffort;
     private final DevelopmentEffort developmentEffort;
     private final QualityAssurancesEffort qualityAssuranceEffort;
+    private final DeployEffort deployEffort;
 
     @Getter(AccessLevel.PUBLIC)
     private int order;
@@ -21,12 +22,14 @@ public class Task extends Domain<Task> implements Comparable<Task> {
                 AnalysisEffort analysisEffort,
                 DevelopmentEffort developmentEffort,
                 QualityAssurancesEffort qualityAssuranceEffort,
+                DeployEffort deployEffort,
                 int order) {
 
         this.taskType = taskType;
         this.analysisEffort = analysisEffort;
         this.developmentEffort = developmentEffort;
         this.qualityAssuranceEffort = qualityAssuranceEffort;
+        this.deployEffort = deployEffort;
 
         this.order = order;
     }
@@ -44,6 +47,18 @@ public class Task extends Domain<Task> implements Comparable<Task> {
 
     public boolean analysisEffortCompleted() {
         return this.analysisEffort.completed();
+    }
+
+    public boolean developmentEffortCompleted() {
+        return this.developmentEffort.completed();
+    }
+
+    public boolean qualityAssuranceEffortCompleted() {
+        return this.qualityAssuranceEffort.completed();
+    }
+
+    public boolean deployEffortCompleted() {
+        return this.deployEffort.completed();
     }
 
     public void executeAnalystWork(VirtualWork virtualWork) {

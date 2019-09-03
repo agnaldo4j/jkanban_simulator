@@ -1,6 +1,7 @@
 package com.agnaldo4j.kanban.simulator.models;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.SortedSet;
 
 public class Workflow extends Domain<Workflow> {
@@ -134,5 +135,24 @@ public class Workflow extends Domain<Workflow> {
             this.analysis.removeTask(task);
             this.development.addTask(task);
         } else throw new IllegalStateException("task "+task.id()+" hasn't be completed");
+    }
+
+    public void moveCardsToNextStep() {
+        moveCardsToNextStep(this.analysis.analysisCompletedTasks(), this.analysis, this.development);
+
+        moveCardsToNextStep(this.development.developmentCompletedTasks(), this.development, this.qualityAssurance);
+
+        moveCardsToNextStep(this.qualityAssurance.qualityAssuranceCompletedTasks(), this.qualityAssurance, this.deploy);
+
+        moveCardsToNextStep(this.deploy.deployCompletedTasks(), this.deploy, this.done);
+
+    }
+
+    private void moveCardsToNextStep(List<Task> tasks, Flow from, Flow to) {
+        tasks
+            .forEach(task -> {
+                from.removeTask(task);
+                to.addTask(task);
+            });
     }
 }
