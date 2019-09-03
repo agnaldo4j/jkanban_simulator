@@ -1,6 +1,10 @@
 package com.agnaldo4j.kanban.simulator.models;
 
-import com.agnaldo4j.kanban.simulator.models.builders.*;
+import com.agnaldo4j.kanban.simulator.models.builders.DefaultDays;
+import com.agnaldo4j.kanban.simulator.models.builders.DefaultKanbanBoard;
+import com.agnaldo4j.kanban.simulator.models.builders.DefaultMembers;
+import com.agnaldo4j.kanban.simulator.models.builders.DefaultProjects;
+import com.agnaldo4j.kanban.simulator.models.builders.DefaultSimulation;
 import org.junit.jupiter.api.BeforeEach;
 
 public class DefaultSimulationTest {

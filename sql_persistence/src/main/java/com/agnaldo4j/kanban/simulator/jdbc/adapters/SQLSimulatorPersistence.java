@@ -12,7 +12,7 @@ import java.util.Optional;
 public class SQLSimulatorPersistence implements SimulatorPersistence {
 
     @Autowired
-    SimulationRepository simulationRepository;
+    private SimulationRepository simulationRepository;
 
     @Override
     public Optional<Simulation> findById(String id) {

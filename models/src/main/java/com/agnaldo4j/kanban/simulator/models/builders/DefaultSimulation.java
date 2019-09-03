@@ -1,6 +1,11 @@
 package com.agnaldo4j.kanban.simulator.models.builders;
 
-import com.agnaldo4j.kanban.simulator.models.*;
+import com.agnaldo4j.kanban.simulator.models.Kanban;
+import com.agnaldo4j.kanban.simulator.models.Member;
+import com.agnaldo4j.kanban.simulator.models.MemberAbility;
+import com.agnaldo4j.kanban.simulator.models.Project;
+import com.agnaldo4j.kanban.simulator.models.Simulation;
+import com.agnaldo4j.kanban.simulator.models.VirtualDay;
 
 import java.util.List;
 import java.util.SortedSet;
