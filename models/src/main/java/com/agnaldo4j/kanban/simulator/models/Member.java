@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Accessors(fluent = true)
 public class Member extends Domain<Member> {
@@ -31,13 +32,31 @@ public class Member extends Domain<Member> {
     }
 
     public boolean hasAbility(MemberAbility requiredAbility) {
-        return this.abilities
-                .stream()
-                .filter(memberAbility -> memberAbility.equals(requiredAbility))
-                .findFirst().isPresent();
+        return this.abilities.contains(requiredAbility);
     }
 
     public void workAt(Flow flow) {
-        this.flow = flow;
+        if (this.hasAbility(flow.requiredMemberAbility())) this.flow = flow;
+        else throw new IllegalStateException("This member: "+this.name+" don't have required abilities to work on: "+ flow.name());
+    }
+
+    public void executeWork(VirtualWork virtualWork) {
+        Optional<Task> mostPriorityTaskOpt = this.flow.mostPriorityTask();
+
+        do {
+            if (mostPriorityTaskOpt.isPresent()) {
+                Task mostPriorityTask = mostPriorityTaskOpt.get();
+                if (this.flow.requiredMemberAbility().equals(MemberAbility.Analyst))
+                    mostPriorityTask.executeAnalystWork(virtualWork);
+                else if (this.flow.requiredMemberAbility().equals(MemberAbility.Developer))
+                    mostPriorityTask.executeDeveloperWork(virtualWork);
+                else if (this.flow.requiredMemberAbility().equals(MemberAbility.QualityAssurance))
+                    mostPriorityTask.executeQualityAssuranceWork(virtualWork);
+                else if (this.flow.requiredMemberAbility().equals(MemberAbility.Deployer))
+                    mostPriorityTask.executeDeployerWork(virtualWork);
+
+                mostPriorityTaskOpt = this.flow.nextMostPriorityTask(mostPriorityTask);
+            }
+        } while(virtualWork.hasEffortYet() && mostPriorityTaskOpt.isPresent());
     }
 }

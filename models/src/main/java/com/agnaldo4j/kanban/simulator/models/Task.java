@@ -45,4 +45,24 @@ public class Task extends Domain<Task> implements Comparable<Task> {
     public boolean analysisEffortCompleted() {
         return this.analysisEffort.completed();
     }
+
+    public void executeAnalystWork(VirtualWork virtualWork) {
+        this.analysisEffort.executeEffort(virtualWork);
+        virtualWork.addWorkedTask(this);
+    }
+
+    public void executeDeveloperWork(VirtualWork virtualWork) {
+        this.developmentEffort.executeEffort(virtualWork);
+        virtualWork.addWorkedTask(this);
+    }
+
+    public void executeQualityAssuranceWork(VirtualWork virtualWork) {
+        this.qualityAssuranceEffort.executeEffort(virtualWork);
+        virtualWork.addWorkedTask(this);
+    }
+
+    public void executeDeployerWork(VirtualWork virtualWork) {
+        this.developmentEffort.executeEffort(virtualWork);
+        virtualWork.addWorkedTask(this);
+    }
 }

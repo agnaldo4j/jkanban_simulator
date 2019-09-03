@@ -12,7 +12,7 @@ public class DefaultSimulationTest {
                 new DefaultKanbanBoard(),
                 new DefaultProjects(),
                 new DefaultMembers(),
-                new DefaultDays()
+                new DefaultDays(new ConstantEffortGenerator())
         ).build();
     }
 }

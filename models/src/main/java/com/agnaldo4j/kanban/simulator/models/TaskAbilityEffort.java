@@ -15,17 +15,10 @@ public class TaskAbilityEffort extends Domain {
         this.remainingEffort = effortType.effort();
     }
 
-    public int executeEffort(Member member, int execution) {
-        if (!member.hasAbility(requiredAbility)) return execution;
+    public void executeEffort(VirtualWork virtualWork) {
+        if (!virtualWork.hasAbility(requiredAbility)) return;
 
-        if (this.remainingEffort >= execution) {
-            this.remainingEffort = this.remainingEffort - execution;
-            return 0;
-        } else {
-            int remainingExecution = execution - this.remainingEffort;
-            this.remainingEffort = 0;
-            return remainingExecution;
-        }
+        this.remainingEffort = virtualWork.executeEffort(this.remainingEffort);
     }
 
     public boolean completed() {
