@@ -18,10 +18,10 @@ public class Workflow extends Domain<Workflow> {
     public Workflow() {
         this.options = new Flow("Options");
         this.backlog = new Flow("Backlog");
-        this.analysis = new Flow("Analysis");
-        this.development = new Flow("Development");
-        this.qualityAssurance = new Flow("Quality Assurance");
-        this.deploy = new Flow("Deploy");
+        this.analysis = new Flow("Analysis", MemberAbility.Analyst);
+        this.development = new Flow("Development", MemberAbility.Developer);
+        this.qualityAssurance = new Flow("Quality Assurance", MemberAbility.QualityAssurance);
+        this.deploy = new Flow("Deploy", MemberAbility.Deployer);
         this.done = new Flow("Done");
     }
 
