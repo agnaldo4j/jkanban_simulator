@@ -10,7 +10,7 @@ public interface PrevalentSystem {
 
     public void execute(Command command) throws IOException;
 
-    public <RESULT> RESULT execute(Query<RESULT> query);
+    public <T> T execute(Query<T> query);
 
     public void load(List<Simulation> initialState) throws IOException, ClassNotFoundException;
 }

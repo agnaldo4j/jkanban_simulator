@@ -55,11 +55,12 @@ public class WorkOnTasksSimulationTest extends DefaultSimulationTest {
 
         this.simulation.performRandomWork();
 
-        this.simulation.moveFromAnalysisToDevelopment(this.simulation.tasksInAnalysis().first());
+        this.simulation.moveCardsToNextStep();
 
         assertEquals(8, this.simulation.numberOfTasksOnKanbanBoard());
         assertEquals(7, this.simulation.tasksInOptions().size());
         assertEquals(0, this.simulation.tasksInBacklog().size());
-        //assertEquals(1, this.simulation.tasksInAnalysis().size());
+        assertEquals(0, this.simulation.tasksInAnalysis().size());
+        assertEquals(1, this.simulation.tasksInDevelopment().size());
     }
 }

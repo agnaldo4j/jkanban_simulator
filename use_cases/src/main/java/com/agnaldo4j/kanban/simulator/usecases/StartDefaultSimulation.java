@@ -12,7 +12,8 @@ import java.util.Optional;
 public class StartDefaultSimulation {
 
     @Autowired
-    SimulatorPersistence simulatorPersistence;
+    private SimulatorPersistence simulatorPersistence;
+
     public Optional<Simulation> execute() throws Exception {
         Simulation simulation = new DefaultSimulation(
                 new DefaultKanbanBoard(),

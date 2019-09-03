@@ -4,10 +4,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
-import java.util.Optional;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Accessors(fluent = true)
 public class Flow extends Domain<Flow> {
@@ -61,5 +59,21 @@ public class Flow extends Domain<Flow> {
 
     public Optional<Task> nextMostPriorityTask(Task fromTask) {
         return this.tasks.stream().filter(task -> task.order() > fromTask.order()).findFirst();
+    }
+
+    public List<Task> analysisCompletedTasks() {
+        return this.tasks.stream().filter(task -> task.analysisEffortCompleted()).collect(Collectors.toList());
+    }
+
+    public List<Task> developmentCompletedTasks() {
+        return this.tasks.stream().filter(task -> task.deployEffortCompleted()).collect(Collectors.toList());
+    }
+
+    public List<Task> qualityAssuranceCompletedTasks() {
+        return this.tasks.stream().filter(task -> task.qualityAssuranceEffortCompleted()).collect(Collectors.toList());
+    }
+
+    public List<Task> deployCompletedTasks() {
+        return this.tasks.stream().filter(task -> task.deployEffortCompleted()).collect(Collectors.toList());
     }
 }

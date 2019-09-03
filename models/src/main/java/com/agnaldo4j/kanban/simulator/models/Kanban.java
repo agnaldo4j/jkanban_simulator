@@ -100,4 +100,8 @@ public class Kanban extends Domain<Kanban> {
     public void moveFromAnalysisToDevelopment(Task task) {
         this.workflow.moveFromAnalysisToDevelopment(task);
     }
+
+    public void moveCardsToNextStep() {
+        this.workflow.moveCardsToNextStep();
+    }
 }

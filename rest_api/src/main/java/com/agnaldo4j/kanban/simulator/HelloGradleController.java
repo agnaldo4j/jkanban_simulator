@@ -14,10 +14,10 @@ import java.util.Optional;
 @RestController("/")
 public class HelloGradleController {
 
-    Logger logger = LogManager.getLogger(HelloGradleController.class);
+    private final Logger logger = LogManager.getLogger(HelloGradleController.class);
 
     @Autowired
-    StartDefaultSimulation startDefaultSimulation;
+    private StartDefaultSimulation startDefaultSimulation;
 
     @GetMapping
     public String helloGradle() throws Exception {

@@ -33,6 +33,7 @@ public abstract class ProjectBuilder implements Builder<Project> {
                 new AnalysisEffort(analysisEffort),
                 new DevelopmentEffort(developmentEffort),
                 new QualityAssurancesEffort(qualityAssuranceEffort),
+                new DeployEffort(EffortType.Easy),
                 order
         );
     }
