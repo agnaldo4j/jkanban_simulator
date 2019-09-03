@@ -138,14 +138,15 @@ public class Workflow extends Domain<Workflow> {
     }
 
     public void moveCardsToNextStep() {
-        moveCardsToNextStep(this.analysis.analysisCompletedTasks(), this.analysis, this.development);
+        List<Task> analysisCompletedTasks = this.analysis.analysisCompletedTasks();
+        List<Task> developmentCompletedTasks = this.development.developmentCompletedTasks();
+        List<Task> qualityAssuranceCompletedTasks = this.qualityAssurance.qualityAssuranceCompletedTasks();
+        List<Task> deployCompletedTasks = this.deploy.deployCompletedTasks();
 
-        moveCardsToNextStep(this.development.developmentCompletedTasks(), this.development, this.qualityAssurance);
-
-        moveCardsToNextStep(this.qualityAssurance.qualityAssuranceCompletedTasks(), this.qualityAssurance, this.deploy);
-
-        moveCardsToNextStep(this.deploy.deployCompletedTasks(), this.deploy, this.done);
-
+        moveCardsToNextStep(analysisCompletedTasks, this.analysis, this.development);
+        moveCardsToNextStep(developmentCompletedTasks, this.development, this.qualityAssurance);
+        moveCardsToNextStep(qualityAssuranceCompletedTasks, this.qualityAssurance, this.deploy);
+        moveCardsToNextStep(deployCompletedTasks, this.deploy, this.done);
     }
 
     private void moveCardsToNextStep(List<Task> tasks, Flow from, Flow to) {
