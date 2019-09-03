@@ -11,10 +11,10 @@ import java.util.Optional;
 
 @Component
 public class Simulator {
-    Logger logger = LogManager.getLogger(Simulator.class);
+    private final Logger logger = LogManager.getLogger(Simulator.class);
 
     @Autowired
-    SimulatorPersistence simulatorPersistence;
+    private SimulatorPersistence simulatorPersistence;
 
     public Optional<Simulation> execute() {
         logger.info("TESTE DE LOG");
