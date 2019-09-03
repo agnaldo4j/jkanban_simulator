@@ -59,7 +59,7 @@ public class Flow extends Domain<Flow> {
         else return Optional.of(this.tasks.first());
     }
 
-    public Optional<Task> nextMostPriorityTask(Task task) {
-        return this.tasks.stream().filter(task1 -> task1.order() > task.order()).findFirst();
+    public Optional<Task> nextMostPriorityTask(Task fromTask) {
+        return this.tasks.stream().filter(task -> task.order() > fromTask.order()).findFirst();
     }
 }

@@ -37,7 +37,11 @@ public class Member extends Domain<Member> {
 
     public void workAt(Flow flow) {
         if (this.hasAbility(flow.requiredMemberAbility())) this.flow = flow;
-        else throw new IllegalStateException("This member: "+this.name+" don't have required abilities to work on: "+ flow.name());
+        else {
+            throw new IllegalStateException(
+                    "This member: "+this.name+" don't have required abilities to work on: "+ flow.name()
+            );
+        }
     }
 
     public void executeWork(VirtualWork virtualWork) {
