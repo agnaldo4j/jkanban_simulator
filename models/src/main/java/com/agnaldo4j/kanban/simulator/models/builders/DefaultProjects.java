@@ -7,8 +7,6 @@ import java.util.TreeSet;
 
 public class DefaultProjects implements Builder<SortedSet<Project>> {
 
-    public DefaultProjects() {}
-
     @Override
     public SortedSet<Project> build() {
         SortedSet<Project> projects = new TreeSet<>();

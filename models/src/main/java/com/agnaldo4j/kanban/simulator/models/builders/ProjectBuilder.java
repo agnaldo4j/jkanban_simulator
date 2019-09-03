@@ -1,6 +1,13 @@
 package com.agnaldo4j.kanban.simulator.models.builders;
 
-import com.agnaldo4j.kanban.simulator.models.*;
+import com.agnaldo4j.kanban.simulator.models.AnalysisEffort;
+import com.agnaldo4j.kanban.simulator.models.DeployEffort;
+import com.agnaldo4j.kanban.simulator.models.DevelopmentEffort;
+import com.agnaldo4j.kanban.simulator.models.EffortType;
+import com.agnaldo4j.kanban.simulator.models.Project;
+import com.agnaldo4j.kanban.simulator.models.QualityAssurancesEffort;
+import com.agnaldo4j.kanban.simulator.models.Task;
+import com.agnaldo4j.kanban.simulator.models.TaskType;
 
 import java.util.List;
 

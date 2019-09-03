@@ -13,7 +13,7 @@ import java.util.Optional;
 @Component
 public class SimulatorPersistenceAdapter implements SimulatorPersistence {
     @Autowired
-    PrevalentSystem prevalentSystem;
+    private PrevalentSystem prevalentSystem;
 
     @Override
     public Optional<Simulation> findById(String id) {
