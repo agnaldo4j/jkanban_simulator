@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class Simulator {
-    private final Logger logger = LogManager.getLogger(Simulator.class);
+public class FindSimulationById {
+    private final Logger logger = LogManager.getLogger(FindSimulationById.class);
 
     @Autowired
     private SimulatorPersistence simulatorPersistence;

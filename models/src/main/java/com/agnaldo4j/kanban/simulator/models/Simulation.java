@@ -159,7 +159,7 @@ public class Simulation extends Domain<Simulation> {
     public void performRandomWork() {
         VirtualDay virtualDay = this.days.first();
 
-        this.members.forEach(member -> virtualDay.giveEffort(member));
+        this.members.forEach(member -> virtualDay.performWorkWith(member));
 
         this.days.remove(virtualDay);
         this.pastDays.add(virtualDay);
