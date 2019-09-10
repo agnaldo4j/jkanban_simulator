@@ -37,7 +37,7 @@ public class SimulationController {
         }
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_XML_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> startNewSimulation() {
         logger.info("CONTROLLER CHAMADO");
         try {
