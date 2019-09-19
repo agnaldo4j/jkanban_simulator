@@ -12,8 +12,6 @@ import java.util.List;
 
 public class CreateNewSimulation implements Command {
 
-    public CreateNewSimulation() {}
-
     @Override
     public void execute(List<Simulation> state) {
         Simulation simulation = new DefaultSimulation(

@@ -30,6 +30,7 @@ public class SimulationController {
     public ResponseEntity<String> listSimulations() {
         try {
             List<SimulationView> simulations = listSimulations.execute();
+            logger.info(simulations);
             return ResponseEntity.status(HttpStatus.OK).body("{}");
         } catch(Exception e) {
             logger.error(e);
