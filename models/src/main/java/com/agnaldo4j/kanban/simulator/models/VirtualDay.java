@@ -33,7 +33,7 @@ public class VirtualDay extends Domain<VirtualDay> implements Comparable<Virtual
         else return 0;
     }
 
-    public void giveEffort(Member member) {
+    public void performWorkWith(Member member) {
         int randomEffort = this.effortGenerator.generateEffort();
         VirtualWork virtualWork = new VirtualWork(member, "OK", randomEffort);
         this.effortByMember.add(virtualWork);

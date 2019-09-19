@@ -23,8 +23,8 @@ public class HelloGradleControllerTest {
 
     @Test
     public void helloGradle() throws Exception {
-        mvc.perform(get("/"))
+        mvc.perform(get("/v1/simulations"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello Gradle!"));
+                .andExpect(content().string("{}"));
     }
 }

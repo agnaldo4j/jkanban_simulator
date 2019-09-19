@@ -6,6 +6,7 @@ import com.agnaldo4j.kanban.simulator.usecases.adapters.SimulatorPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -20,7 +21,12 @@ public class SQLSimulatorPersistence implements SimulatorPersistence {
     }
 
     @Override
-    public void add(Simulation simulation) throws Exception {
-        simulationRepository.save(simulation);
+    public void createNewSimulation() throws Exception {
+        //simulationRepository.save(simulation);
+    }
+
+    @Override
+    public List<Simulation> listSimulations() {
+        return null;
     }
 }
